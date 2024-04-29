@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/home/add_task_bottom_sheet.dart';
 import 'package:to_do_app/home/tabs/setting_tab.dart';
 import 'package:to_do_app/home/tabs/task_tab.dart';
 
@@ -28,7 +29,17 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (context) {
+                    return Container(
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                        child: AddTaskBottomSheet());
+                  });
+            },
             child: Icon(
               Icons.add,
               color: Colors.white,
@@ -63,11 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 BottomNavigationBarItem(icon: Icon(Icons.settings), label: ""),
               ]),
         ),
-
-
         body: tabs[index],
       ),
     );
   }
-  List<Widget>tabs =[TaskTab(),SettingTab()];
+
+  List<Widget> tabs = [TaskTab(), SettingTab()];
 }
