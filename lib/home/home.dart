@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/home/tabs/setting_tab.dart';
+import 'package:to_do_app/home/tabs/task_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home";
@@ -10,45 +12,47 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int index =0 ;
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(color: Color(0xFFDFECDB)),
       child: Scaffold(
+        extendBody: true,
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          toolbarHeight: 157,
           backgroundColor: Color(0xFF5D9CEC),
           title: Text("To Do List",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700)),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700)),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(onPressed: (){
-
-        },
-            child: Icon(Icons.add,
-            color: Colors.white,
-            size: 40,),
-        backgroundColor: Colors.blue,
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {},
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 50,
+            ),
+            backgroundColor: Colors.blue,
             elevation: 0,
-        shape: CircleBorder(
-          side: BorderSide(color: Colors.white,width: 2.5,
-          style: BorderStyle.solid),
-        )),
+            shape: CircleBorder(
+              side: BorderSide(
+                  color: Colors.white, width: 2.5, style: BorderStyle.solid),
+            )),
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
-          notchMargin: 2,
+          notchMargin: 5,
+          color: Colors.white,
+          height: 60,
           child: BottomNavigationBar(
-            currentIndex: index,
+              currentIndex: index,
               onTap: (value) {
-              index=value;
-              setState(() {
-
-              });
+                index = value;
+                setState(() {});
               },
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
               selectedIconTheme: IconThemeData(color: Colors.blue),
               unselectedIconTheme: IconThemeData(color: Colors.grey),
               showSelectedLabels: false,
@@ -59,7 +63,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 BottomNavigationBarItem(icon: Icon(Icons.settings), label: ""),
               ]),
         ),
+
+
+        body: tabs[index],
       ),
     );
   }
+  List<Widget>tabs =[TaskTab(),SettingTab()];
 }
