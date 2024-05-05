@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:to_do_app/firebase/firebase_functions.dart';
+import 'package:to_do_app/task_model.dart';
 
 class AddTaskBottomSheet extends StatefulWidget {
   AddTaskBottomSheet({super.key});
@@ -89,7 +91,15 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
           Container(
             width: double.infinity,
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  TaskModel model = TaskModel(
+                      title: titleController.text,
+                      date:
+                          DateUtils.dateOnly(chosenDate).millisecondsSinceEpoch,
+                      description: descriptionController.text);
+                  FirebaseFunctions.addTask(model);
+                  Navigator.pop(context);
+                },
                 child: Text(
                   "Add Task",
                   style: TextStyle(

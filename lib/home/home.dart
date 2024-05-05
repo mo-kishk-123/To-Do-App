@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/home/tabs/task_tab.dart';
 import 'package:to_do_app/home/add_task_bottom_sheet.dart';
 import 'package:to_do_app/home/tabs/setting_tab.dart';
-import 'package:to_do_app/home/tabs/task_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home";
@@ -53,9 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
+          padding: EdgeInsets.zero,
+          height: 60,
           notchMargin: 5,
           color: Colors.white,
-          height: 60,
           child: BottomNavigationBar(
               currentIndex: index,
               onTap: (value) {
