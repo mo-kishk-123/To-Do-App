@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:to_do_app/firebase/firebase_functions.dart';
-import 'package:to_do_app/task_model.dart';
+import 'package:to_do_app/models/task_model.dart';
 
 class AddTaskBottomSheet extends StatefulWidget {
   AddTaskBottomSheet({super.key});

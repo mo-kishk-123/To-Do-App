@@ -3,7 +3,7 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_app/firebase/firebase_functions.dart';
 import 'package:to_do_app/home/task_item.dart';
-import 'package:to_do_app/task_model.dart';
+import 'package:to_do_app/models/task_model.dart';
 
 class TaskTab extends StatefulWidget {
   static const String routeName = "TAsks";
